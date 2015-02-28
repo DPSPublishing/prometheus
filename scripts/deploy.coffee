@@ -1,8 +1,9 @@
 
 
 module.exports = (robot) ->
-	robot.router.get '/deploy/:site', (req, res) ->
+	robot.router.post '/deploy/:site', (req, res) ->
 		site = req.params.site
-		data = JSON.parse req.body.payload
+		data = {}
+		data = JSON.parse req.body.payload if req.body.payload
 
 		robot.messageRoom 'depolyment', "I have a secret: #{site}"
