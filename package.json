@@ -5,6 +5,7 @@
   "author": "Thomas Albrighton <thomasalbrighton@gmail.com>",
   "description": "A simple helpful robot for your Company",
   "dependencies": {
+    "htmlparser": "1.7.6",
     "hubot": "^2.11.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.1.2",
@@ -18,9 +19,10 @@
     "hubot-shipit": "^0.1.1",
     "hubot-slack": "^3.2.1",
     "hubot-youtube": "^0.1.2",
+    "node-wit": "^1.1.0",
     "scraper": "0.0.9",
-    "htmlparser": "1.7.6",
-    "soupselect": "0.2.0"
+    "soupselect": "0.2.0",
+    "underscore": "^1.7.0"
   },
   "engines": {
     "node": "0.10.x"

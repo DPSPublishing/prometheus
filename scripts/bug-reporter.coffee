@@ -1,16 +1,16 @@
-{publications} = require './applications/publications.coffee'
+publications = require './applications/publications'
 
 module.exports = (robot) ->
 
   ask = (robot, msg) ->
     msg.send 'What are you having an issue with?'
-    robot.eatOneResponse msg.envelope.user, (msg) ->
+    robot.eatOneResponse msg.message.user, (msg) ->
 
       msg.send 'picked: ' + msg.match[1].toLowerCase()
 
       switch msg.match[1].toLowerCase()
-        when 'publications','publication'
-          publications robot msg
+        when 'publications', 'publication', 'pubs', 'p'
+          publications robot, msg
         else
           msg.send 'Sorry that is not a valid answer\nPlease pick one of\n - Publications'
           ask robot, msg
