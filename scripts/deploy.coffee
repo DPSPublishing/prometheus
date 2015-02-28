@@ -6,4 +6,4 @@ module.exports = (robot) ->
 		data = {}
 		data = JSON.parse req.body.payload if req.body.payload
 
-		robot.messageRoom 'depolyment', "I have a secret: #{site}"
+		robot.messageRoom 'deployment', "I have a secret: #{site}"
