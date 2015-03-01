@@ -14,7 +14,7 @@ module.exports = (robot) ->
 		data = JSON.parse req.body.payload if req.body.payload
 		users = []
 
-		users[user.length] = commit.author for commit in data.commits if data.commits
+		users[users.length] = commit.author for commit in data.commits if data.commits
 
 		users = removeDuplicates users
 
