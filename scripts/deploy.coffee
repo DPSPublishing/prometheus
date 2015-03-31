@@ -13,6 +13,7 @@ module.exports = (robot) ->
 		data = {}
 		data = JSON.parse req.body.payload if req.body.payload
 		users = []
+    commits = []
 
 		users[users.length] = commit.author for commit in data.commits if data.commits
 
@@ -20,4 +21,15 @@ module.exports = (robot) ->
 
 		users_string = users.join '\n'
 
-		robot.messageRoom 'deployment', "New commits from #{users_string}"
+    robot.emit 'slack.attachment',
+      content:
+        # see https://api.slack.com/docs/attachments
+        text: "New commits from #{users_string}"
+        fallback: "New commits from #{users_string}"
+        fields: [{
+          title: "Field title"
+          value: "Field value"
+        }]
+      channel: "#deployment"
+
+		# robot.messageRoom 'deployment', "New commits from #{users_string}"
