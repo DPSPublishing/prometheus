@@ -20,4 +20,4 @@ module.exports = (robot) ->
 
 		users_string = users.join '\n'
 
-		robot.messageRoom 'deployment', "commits from #{users_string}"
+		robot.messageRoom 'deployment', "New commits from #{users_string}"
