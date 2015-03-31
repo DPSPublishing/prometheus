@@ -5,7 +5,7 @@
   "author": "Thomas Albrighton <thomasalbrighton@gmail.com>",
   "description": "A simple helpful robot for your Company",
   "dependencies": {
-    "htmlparser": "1.7.6",
+    "htmlparser": "^1.7.6",
     "hubot": "^2.11.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.1.2",

@@ -8,5 +8,6 @@
   "hubot-maps",
   "hubot-rules",
   "hubot-shipit",
-  "hubot-youtube"
+  "hubot-youtube",
+  "hubot-slack-attachment"
 ]
