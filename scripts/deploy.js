@@ -40,10 +40,12 @@ module.exports = function(robot) {
 
         users_string = users.join(', ')
 
-        robot.emit('slack.attachment', {
-            content: content,
-            channel: "#deployment"
-        });
+        for (j = 0, len = content.length; j < len; j++) {
+            robot.emit('slack.attachment', {
+                content: content[j],
+                channel: "#deployment"
+            });
+        }
 
         res.send('OK');
 
