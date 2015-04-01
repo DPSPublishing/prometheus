@@ -7,7 +7,7 @@ module.exports = function(robot) {
         }
         var users = [];
 
-        var fields = []
+        var content = []
 
         if (data.commits) {
             for (j = 0, len = data.commits.length; j < len; j++) {
@@ -16,11 +16,16 @@ module.exports = function(robot) {
                     users.push(commit.author);
                 }
 
-
-                fields.push({
-                    "title": "Message",
-                    "value": commit.message,
-                    "short": commit.message.length < 140 ? true : false
+                content.push({
+                    // see https://api.slack.com/docs/attachments
+                    pretext: "New commits from " + users_string,
+                    color: "#439FE0",
+                    fallback: "Total of " + data.commits.length + " commits",
+                    fields: {
+                        "title": "Message",
+                        "value": commit.message,
+                        "short": commit.message.length < 140 ? true : false
+                    }
                 });
             }
         }
@@ -29,13 +34,7 @@ module.exports = function(robot) {
         users_string = users.join(', ')
 
         robot.emit('slack.attachment', {
-            content: {
-                // see https://api.slack.com/docs/attachments
-                pretext: "New commits from " + users_string,
-                color: "#439FE0",
-                fallback: "Total of " + data.commits.length + " commits",
-                fields: fields
-            },
+            content: content,
             channel: "#deployment"
         });
 
