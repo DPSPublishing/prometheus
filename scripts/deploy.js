@@ -20,19 +20,19 @@ module.exports = function(robot) {
                 fields.push({
                     "title": "Message",
                     "value": commit.message,
-                    "color": "#439FE0",
                     "short": commit.message.length < 140 ? true : false
                 });
             }
         }
 
 
-        users_string = users.join('\n')
+        users_string = users.join(', ')
 
-        robot.emit('slack.attachment',{
+        robot.emit('slack.attachment', {
             content: {
                 // see https://api.slack.com/docs/attachments
                 pretext: "New commits from " + users_string,
+                color: "#439FE0"
                 fallback: "Total of " + data.commits.length + " commits",
                 fields: fields
             },
