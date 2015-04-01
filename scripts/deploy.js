@@ -15,10 +15,14 @@ module.exports = function(robot) {
                 if (users.indexOf(commit.author) === -1) {
                     users.push(commit.author);
                 }
+                var pretext = ''
+                if (j === 0) {
+                    pretext = "New commits to " + data.repository.name
+                }
 
                 content.push({
                     // see https://api.slack.com/docs/attachments
-                    // pretext: "New commit from " + users_string,
+                    pretext: pretext,
                     color: "#439FE0",
                     fallback: commit.message,
                     fields: [,
