@@ -20,7 +20,8 @@ module.exports = function(robot) {
                 fields.push({
                     "title": "Message",
                     "value": commit.message,
-                    "color": "#439FE0"
+                    "color": "#439FE0",
+                    "short": commit.message.length < 140 ? true : false
                 });
             }
         }
@@ -31,13 +32,14 @@ module.exports = function(robot) {
         robot.emit('slack.attachment',{
             content: {
                 // see https://api.slack.com/docs/attachments
-                text: "New commits from " + users_string,
-                fallback: "New commits from " + users_string,
+                pretext: "New commits from " + users_string,
+                fallback: "Total of " + data.commits.length + " commits",
                 fields: fields
             },
             channel: "#deployment"
         });
 
+        res.send('OK');
 
     });
 }
