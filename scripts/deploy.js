@@ -24,6 +24,8 @@ module.exports = function(robot) {
                     // see https://api.slack.com/docs/attachments
                     pretext: pretext,
                     color: "#439FE0",
+                    title: commit.node + ' ' + commit.message.split("\n")[0],
+                    title_link: 'https://bitbucket.org' + commit.repository.absolute_url + 'commits/' + commit.raw_node,
                     fallback: commit.message,
                     fields: [,
                         {
@@ -32,9 +34,9 @@ module.exports = function(robot) {
                             "short": true
                         },
                         {
-                            "title": "Message",
-                            "value": commit.message,
-                            "short": commit.message.length < 140 ? true : false
+                            "title": "Branch",
+                            "value": commit.branch,
+                            "short": true
                         }
                     ]
                 });
