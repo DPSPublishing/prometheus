@@ -32,7 +32,7 @@ module.exports = function(robot) {
             content: {
                 // see https://api.slack.com/docs/attachments
                 pretext: "New commits from " + users_string,
-                color: "#439FE0"
+                color: "#439FE0",
                 fallback: "Total of " + data.commits.length + " commits",
                 fields: fields
             },
