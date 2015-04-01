@@ -38,5 +38,6 @@ module.exports = function(robot) {
             channel: "#deployment"
         });
 
-    }
+
+    });
 }
