@@ -18,14 +18,21 @@ module.exports = function(robot) {
 
                 content.push({
                     // see https://api.slack.com/docs/attachments
-                    pretext: "New commits from " + users_string,
+                    // pretext: "New commit from " + users_string,
                     color: "#439FE0",
-                    fallback: "Total of " + data.commits.length + " commits",
-                    fields: {
-                        "title": "Message",
-                        "value": commit.message,
-                        "short": commit.message.length < 140 ? true : false
-                    }
+                    fallback: commit.message,
+                    fields: [,
+                        {
+                            "title": "Commiter",
+                            "value": commit.author,
+                            "short": true
+                        },
+                        {
+                            "title": "Message",
+                            "value": commit.message,
+                            "short": commit.message.length < 140 ? true : false
+                        }
+                    ]
                 });
             }
         }
