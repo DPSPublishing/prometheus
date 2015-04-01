@@ -1,5 +1,5 @@
 module.exports = function(robot) {
-    robot.router.post('/deploy/:site', function(req, res) {
+    robot.router.post('/bitbucket/push', function(req, res) {
         var site = req.params.site;
         var data = {commits:[]};
         if (req.body.payload) {
