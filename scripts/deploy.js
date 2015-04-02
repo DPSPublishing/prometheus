@@ -25,7 +25,7 @@ module.exports = function(robot) {
                     pretext: pretext,
                     color: "#439FE0",
                     title: commit.node + ' ' + commit.message.split("\n")[0],
-                    title_link: 'https://bitbucket.org' + commit.repository.absolute_url + 'commits/' + commit.raw_node,
+                    title_link: 'https://bitbucket.org' + data.repository.absolute_url + 'commits/' + commit.raw_node,
                     fallback: commit.message,
                     fields: [,
                         {
