@@ -1,11 +1,12 @@
-Handlebars = require('handlebars');
+
+
+var Handlebars = require('handlebars');
 
 module.exports = function(robot) {
+	view = require('./../src/view.js')(robot);
 	robot.router.get('/', function(req, res) {
 
-		var views = require('./../build/js/templates.js');
-
-		res.send(views.templates.index({robot: robot}))
+		res.send(view('index', {robot: robot}))
 
 	});
 
