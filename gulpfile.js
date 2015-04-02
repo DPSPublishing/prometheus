@@ -11,11 +11,11 @@ gulp.task('templates', function(){
 		.pipe(handlebars())
 		.pipe(wrap('Handlebars.template(<%= contents %>)'))
 		.pipe(declare({
-			namespace: 'hubot.templates',
+			namespace: 'templates',
 			noRedeclare: true, // Avoid duplicate declarations
 		}))
+		// .pipe(defineModule('node'))
 		.pipe(concat('templates.js'))
-		.pipe(defineModule('node'))
 		.pipe(gulp.dest('build/js/'));
 });
 

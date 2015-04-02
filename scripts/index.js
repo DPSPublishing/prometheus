@@ -3,9 +3,9 @@ Handlebars = require('handlebars');
 module.exports = function(robot) {
 	robot.router.get('/', function(req, res) {
 
-		var template = require('./../build/js/templates.js');
+		var views = require('./../build/js/templates.js');
 
-		res.send(JSON.stringify(template))
+		res.send(views.templates.index({robot: robot}))
 
 	});
 

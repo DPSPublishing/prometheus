@@ -1,0 +1,13 @@
+<html>
+<head>
+
+</head>
+<body>
+	<div>Hello World from {{robot.name}}</div>
+	{{#if robot.brain && robot.brain.users}}
+		{{#each robot.brain.users}}
+		<div>{{name}}<div>
+		{{/each}}
+	{{/if}}
+</body>
+<html>
