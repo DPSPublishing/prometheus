@@ -8,7 +8,7 @@ module.exports = function(robot) {
 		var data = data || {};
 
 		data.robot = robot;
-		data.users = robot.brain.users;
+		data.users = robot.brain.data.users;
 
 		return views(data);
 
