@@ -1,16 +1,20 @@
 
-
+var express = require('express');
+var path = require('path');
 var Handlebars = require('handlebars');
 
 module.exports = function(robot) {
-	view = require('./../src/view.js')(robot);
 	robot.router.get('/', function(req, res) {
 
-		res.send(view('index', {robot: robot}))
+		res.send(robot.render('index'));
 
 	});
 
-	robot.router.get('asset/:type/:file', function(req, res) {
-		res.send('todo');
+	robot.router.get('/users', function(req, res) {
+
+		res.send(robot.render('users'));
+
 	});
+
+	robot.router.use(express.static(path.join(__dirname, '/../build/public')));
 }

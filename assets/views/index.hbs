@@ -1,13 +1,41 @@
 <html>
 <head>
-
+	<link rel='stylesheet' href='/css/main.css'/>
 </head>
 <body>
 	<div>Hello World from {{robot.name}}</div>
-	{{#if users}}
-		{{#each users}}
-		<div>{{name}}<div>
-		{{/each}}
-	{{/if}}
+	{{#each robot.brain.commits}}
+	<div>
+		{{message}}
+	</div>
+	{{/each}}
+
+
+
+	<form action="bitbucket/push" method="post">
+		<textarea name="payload">
+{
+	"commits": [
+		{
+			"message": "this is a test message",
+			"node": "1234567890",
+			"raw_node": "12345678901234567890",
+			"author": "Thomas Albrighton",
+			"branch": "master"
+		}
+	],
+	"repository": {
+		"name": "test repo",
+		"absolute_url": "https://bitbuckit.com/"
+	}
+}
+		</textarea>
+		<input type="submit">
+	</form>
+
+	<script src="/js/main.js"></script>
+	<script>
+	document.forms[0].firstElementChild.textContent = JSON.stringify(JSON.parse(document.forms[0].firstElementChild.textContent));
+	</script>
 </body>
 <html>

@@ -1,58 +1,66 @@
 module.exports = function(robot) {
-    robot.router.post('/bitbucket/push', function(req, res) {
-        var site = req.params.site;
-        var data = {commits:[]};
-        if (req.body.payload) {
-            data = JSON.parse(req.body.payload);
+
+  robot.respond('last commits', function (msg) {
+    commits = robot.brain.commits;
+    msg.send('test');
+    msg.send(JSON.stringify(commits[commits.length - 1]));
+
+  });
+
+  robot.router.post('/bitbucket/push', function(req, res) {
+      var data = {commits:[]};
+      if (req.body.payload) {
+        data = JSON.parse(req.body.payload);
+      }
+      robot.brain.commits = robot.brain.commits || [];
+
+
+
+      var attachments = []
+
+      if (data.commits) { for (j = 0, len = data.commits.length; j < len; j++) {
+
+        var commit = data.commits[j];
+        commit.repository = data.repository;
+        robot.brain.commits.push(commit);
+
+        var pretext = ''
+        if (j === 0) {
+          pretext = "New commits to " + data.repository.name
         }
-        var users = [];
 
-        var attachments = []
-
-        if (data.commits) {
-            for (j = 0, len = data.commits.length; j < len; j++) {
-                commit = data.commits[j];
-                if (users.indexOf(commit.author) === -1) {
-                    users.push(commit.author);
-                }
-                var pretext = ''
-                if (j === 0) {
-                    pretext = "New commits to " + data.repository.name
-                }
-
-                attachments.push({
-                    // see https://api.slack.com/docs/attachments
-                    pretext: pretext,
-                    color: "#439FE0",
-                    title: commit.node + ' ' + commit.message.split("\n")[0],
-                    title_link: 'https://bitbucket.org' + data.repository.absolute_url + 'commits/' + commit.raw_node,
-                    fallback: commit.message,
-                    fields: [,
-                        {
-                            "title": "Commiter",
-                            "value": commit.author,
-                            "short": true
-                        },
-                        {
-                            "title": "Branch",
-                            "value": commit.branch,
-                            "short": true
-                        }
-                    ]
-                });
+        attachments.push({
+            // see https://api.slack.com/docs/attachments
+          pretext: pretext,
+          color: "#439FE0",
+          title: commit.node.substr(4) + '... ' + commit.message.split("\n")[0],
+          title_link: 'https://bitbucket.org' + data.repository.absolute_url + 'commits/' + commit.raw_node,
+          fallback: commit.message.split("\n")[0],
+          fields: [,
+            {
+              "title": "Commiter",
+              "value": commit.author,
+              "short": true
+            },
+            {
+              "title": "Branch",
+              "value": commit.branch,
+              "short": true
             }
-        }
+          ]
+        });
 
-        // for (j = 0, len = content.length; j < len; j++) {
-            robot.emit('slack.attachment', {
-                content: {
-                    attachments: attachments
-                },
-                channel: "#deployment"
-            });
-        // }
+      }}
 
-        res.send('OK');
+      robot.emit('slack.attachment', {
+          content: {
+              attachments: attachments
+          },
+          channel: "#deployment"
+      });
 
-    });
+
+      res.send('OK');
+
+  });
 }
