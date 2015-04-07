@@ -3,7 +3,7 @@ module.exports = function(robot) {
   robot.respond('last commits', function (msg) {
     commits = robot.brain.commits;
     msg.send('test');
-    msg.send(JSON.stringify(commits[commits.length - 1]));
+    msg.send(JSON.stringify(commits[0]));
 
   });
 
@@ -22,7 +22,7 @@ module.exports = function(robot) {
 
         var commit = data.commits[j];
         commit.repository = data.repository;
-        robot.brain.commits.push(commit);
+        robot.brain.commits.unshift(commit);
 
         var pretext = ''
         if (j === 0) {
