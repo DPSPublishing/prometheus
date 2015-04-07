@@ -9,13 +9,13 @@ module.exports = function (robot) {
 		data.robot = robot;
 
     if (robot.adapterName === 'shell') {
-      robot.brain.data.users = [
+      robot.brain.set('users', [
         {id: 1, name: 'thomas'},
         {id: 2, name: 'bens'},
         {id: 3, name: robot.name},
-      ]
+      ]);
     }
-		data.users = robot.brain.data.users;
+		data.users = robot.brain.get('users');
 
 		var template = Handlebars.template(views.templates[view]);
 		return template(data);

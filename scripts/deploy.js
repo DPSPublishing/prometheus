@@ -12,7 +12,7 @@ module.exports = function(robot) {
       if (req.body.payload) {
         data = JSON.parse(req.body.payload);
       }
-      robot.brain.commits = robot.brain.commits || [];
+      commits = robot.brain.get('commits') || [];
 
 
 
@@ -22,7 +22,7 @@ module.exports = function(robot) {
 
         var commit = data.commits[j];
         commit.repository = data.repository;
-        robot.brain.commits.unshift(commit);
+        commits.unshift(commit);
 
         var pretext = ''
         if (j === 0) {
@@ -51,6 +51,7 @@ module.exports = function(robot) {
         });
 
       }}
+      robot.brain.set('commits', commits);
 
       robot.emit('slack.attachment', {
           content: {

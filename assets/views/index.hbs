@@ -4,13 +4,6 @@
 </head>
 <body>
 	<div>Hello World from {{robot.name}}</div>
-	{{#each robot.brain.commits}}
-	<div>
-		{{message}}
-	</div>
-	{{/each}}
-
-
 
 	<form action="bitbucket/push" method="post">
 		<textarea name="payload">
@@ -34,8 +27,5 @@
 	</form>
 
 	<script src="/js/main.js"></script>
-	<script>
-	document.forms[0].firstElementChild.textContent = JSON.stringify(JSON.parse(document.forms[0].firstElementChild.textContent));
-	</script>
 </body>
 <html>
