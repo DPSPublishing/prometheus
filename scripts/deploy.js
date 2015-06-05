@@ -1,12 +1,12 @@
 module.exports = function(robot) {
 
-  robot.respond('last commits', function (msg) {
-    commits = robot.brain.commits;
-    msg.send('test');
-    msg.send(JSON.stringify(commits[0]));
 
-  });
-
+  robot.hear(/^hubot:? (.+)/i, function (res) {
+    var response = "Sorry, I'm a diva and only respond to #{robot.name}";
+    if  (robot.alias) {response += " or #{robot.alias}"}
+    res.reply(response)
+    return;
+  })
   robot.router.post('/bitbucket/push', function(req, res) {
       var data = {commits:[]};
       if (req.body.payload) {
