@@ -6,7 +6,13 @@ module.exports = function(robot) {
     if  (robot.alias) {response += " or #{robot.alias}"}
     res.reply(response)
     return;
-  })
+  });
+
+  robot.hear(/(who are you|what are you)/i, function (res) {
+    if (res.message.text.indexOf('prometheus') != -1) {
+      res.reply('I am the almighty Prometheus.\nI am here to help with all things helpful.\nTo see what I can do type `@prometheus: help`');
+    }
+  });
   robot.router.post('/bitbucket/push', function(req, res) {
       var data = {commits:[]};
       if (req.body.payload) {
