@@ -4,11 +4,16 @@ module.exports = function(robot) {
 		robot.postJokeOfTheDay();
 	});
 	robot.postJokeOfTheDay = function () {
-		robot.http('http://reddit.com/r/jokes/top.json').get()
+		console.log(robot.http('http://reddit.com/r/jokes/top.json').get())
+
+		return
 			(function (err, res, body) {
 				if (err) console.log("Encountered an error :( " + err);
-				
-				var post = JSON.parse(body).data.children[0].data;
+				console.log('data', body);		
+				return
+				// var post = body.data.children[0].data;
+
+				return robot.reply(body);
 
 				robot.emit('slack-attachment', {
 					channel: "@thattomperson", 
