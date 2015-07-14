@@ -5,7 +5,6 @@ var wunderlist = new WunderlistSDK({
 });
 
 module.exports = function(robot) {
-
     robot.respond(/my lists/i, function (msg) {
         wunderlist.http.lists.all()
           .done(function (lists) {
@@ -14,6 +13,5 @@ module.exports = function(robot) {
           .fail(function () {
             msg.reply('there was a problem');
           });
-    }
-
+    });
 }
