@@ -19,24 +19,30 @@
 module.exports = function(robot) {
     robot.hear(/home time/i, function (res)  {
 
-        var time = new Date();
+        var now = new Date();
         var homeTime = new Date();
-        homeTime.setHours(17,0,0);
 
-        var difference = homeTime.getTime() - time.getTime();
+        homeTime.setHours(17);
+        homeTime.setMinutes(0);
+        homeTime.setSeconds(0);
+        homeTime.setMilliseconds(0);
+
+        var difference = homeTime.getTime() - now.getTime();
 
         if(difference < 0){
-            res.reply('Go home you fool');
+            res.reply('Fly you fool');
             return;
         }
 
-        var date = new Date(difference);
-        var hour = date.getHours();
-        var min = date.getMinutes();
-        var sec = date.getSeconds();
-        var result = hour + ' hours ' + min + " minutes " + sec + ' seconds ';
+        var seconds = parseInt(diff / 1000);
+        var minutes = parseInt(seconds / 60) % 60;
+        var hours = parseInt((seconds / 60) / 60) % 60;
 
-        res.reply('You can go home in ' + result);
+        seconds = seconds % 60;
+
+        var result = hour + ' hours ' + minutes + " minutes " + seconds + ' seconds ';
+
+        res.reply('You can go home in ' + result + ' but only if you are good!!');
     });
 
 }
