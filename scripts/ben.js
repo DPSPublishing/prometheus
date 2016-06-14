@@ -1,3 +1,20 @@
+// Description:
+//   Rodent Motivation
+//
+//   Set the environment variable HUBOT_SHIP_EXTRA_SQUIRRELS (to anything)
+//   for additional motivation
+//
+// Dependencies:
+// None
+//
+// Configuration:
+//   HUBOT_SHIP_EXTRA_SQUIRRELS
+//
+// Commands:
+//   home time
+//
+// Author:
+//   Benjamin
 
 module.exports = function(robot) {
     robot.respond(/home time/i, function () {
