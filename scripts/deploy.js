@@ -7,7 +7,7 @@ module.exports = function(robot) {
     res.reply(response)
     return;
   });
-
+    
   robot.hear(/(who are you|what are you|who is)/i, function (res) {
     if (res.message.text.indexOf('prometheus') != -1) {
       res.reply('I am the almighty Prometheus.\nI am here to help with all things helpful.\nTo see what I can do type `@prometheus: help`');

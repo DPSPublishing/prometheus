@@ -3,6 +3,7 @@ module.exports = function(robot) {
 	robot.respond(/tell me a joke/i, function () {
 		robot.postJokeOfTheDay();
 	});
+	
 	robot.postJokeOfTheDay = function () {
 		console.log(robot.http('http://reddit.com/r/jokes/top.json').get())
 
