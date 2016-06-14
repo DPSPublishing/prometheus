@@ -17,7 +17,7 @@
 //   Benjamin
 
 module.exports = function(robot) {
-    robot.respond(/home time/i, function () {
+    robot.hear(/home time/i, function (res)  {
 
         var time = new Date();
         var homeTime = new Date();
@@ -35,7 +35,7 @@ module.exports = function(robot) {
 
         var result = hour + ' hours ' + min + " minutes " + sec + ' seconds ';
 
-        robot.reply('You can go home in ' + result);
+        res.reply('You can go home in ' + result);
     });
 
 }

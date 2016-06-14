@@ -1,6 +1,5 @@
 module.exports = function(robot) {
 
-
   robot.hear(/^hubot:? (.+)/i, function (res) {
     var response = "Sorry, I'm a diva and only respond to #{robot.name}";
     if  (robot.alias) {response += " or #{robot.alias}"}
