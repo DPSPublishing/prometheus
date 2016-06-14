@@ -23,16 +23,17 @@ module.exports = function(robot) {
         var homeTime = new Date();
         homeTime.setHours(17,0,0);
 
-        var difference = time.getTime() - homeTime.getTime();
+        var difference = homeTime.getTime() - time.getTime();
+
+        if(difference < 0){
+            res.reply('Go home you fool');
+            return;
+        }
 
         var date = new Date(difference);
         var hour = date.getHours();
         var min = date.getMinutes();
         var sec = date.getSeconds();
-        hour = (hour < 10 ? "0" : "") + hour;
-        min = (min < 10 ? "0" : "") + min;
-        sec = (sec < 10 ? "0" : "") + sec;
-
         var result = hour + ' hours ' + min + " minutes " + sec + ' seconds ';
 
         res.reply('You can go home in ' + result);
