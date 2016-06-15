@@ -40,9 +40,14 @@ module.exports = function(robot) {
 
         seconds = seconds % 60;
 
-        var result = hours + ' hours ' + minutes + " minutes " + seconds + ' seconds ';
+        var result = hours + ' hours ' + minutes + " minutes " + seconds + ' seconds';
 
-        res.reply('You can go home in ' + result + ' but only if you are good!!');
+        res.reply('You can go home in ' + result + '! but only if you are good!!');
+        res.reply('But only if you are good!!');
+    });
+
+    robot.hear(/is everything broken/i, function (res)  {
+        res.reply('Yes. I believe tom did it.');
     });
 
 }
