@@ -43,11 +43,11 @@ module.exports = function(robot) {
         var result = hours + ' hours ' + minutes + " minutes " + seconds + ' seconds';
 
         res.reply('You can go home in ' + result);
-        res.say('But only if you are good!!');
+        res.reply('But only if you are good!!');
     });
 
     robot.hear(/is everything broken/i, function (res)  {
-        res.say('Yes. I believe tom did it.');
+        res.reply('Yes. I believe tom did it.');
     });
 
 }
