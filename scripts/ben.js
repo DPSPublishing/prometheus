@@ -34,7 +34,7 @@ module.exports = function(robot) {
             return;
         }
 
-        var seconds = parseInt(diff / 1000);
+        var seconds = parseInt(difference / 1000);
         var minutes = parseInt(seconds / 60) % 60;
         var hours = parseInt((seconds / 60) / 60) % 60;
 
