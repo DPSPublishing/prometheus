@@ -11,7 +11,7 @@
 //   HUBOT_SHIP_EXTRA_SQUIRRELS
 //
 // Commands:
-//   home time
+//   home time - displays the number of hours until it is time to go home
 //
 // Author:
 //   Benjamin
