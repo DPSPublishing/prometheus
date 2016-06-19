@@ -39,8 +39,18 @@ module.exports = function(robot) {
         var hours = parseInt((seconds / 60) / 60) % 60;
 
         seconds = seconds % 60;
+        var parts = []
+        if (hours > 0) {
+            parts.push(hours + ' hours')
+        }
+        if (minutes > 0) {
+            parts.push(minutes + ' minutes')
+        }
+        if (seconds > 0) {
+            parts.push(seconds + ' seconds')
+        }
 
-        var result = hours + ' hours ' + minutes + " minutes " + seconds + ' seconds';
+        var result = parts.join(' ');
 
         res.reply('You can go home in ' + result);
         res.reply('But only if you are good!!');
