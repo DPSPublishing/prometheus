@@ -57,7 +57,7 @@ module.exports = function(robot) {
     });
 
     robot.hear(/is everything broken/i, function (res)  {
-        res.reply('Yes. I believe tom did it.');
+        res.reply('Yes. I believe @benjamin did it.');
     });
 
 }
