@@ -57,7 +57,11 @@ module.exports = function(robot) {
     });
 
     robot.hear(/is everything broken/i, function (res)  {
-        res.reply('Yes. I believe @benjamin did it.');
+
+        var people = ['@benjamin', '@fenski', '@rogie', '@thattomperson', 'someone'];
+        var randomName = people[Math.floor((Math.random() * people.length) + 1)];
+
+        res.reply('Yes. I believe ' + randomName + ' did it.');
     });
 
 }
