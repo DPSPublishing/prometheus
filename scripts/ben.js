@@ -56,7 +56,7 @@ module.exports = function(robot) {
         res.reply('But only if you are good!!');
     });
 
-    robot.hear(/is everything broken/i, function (res)  {
+    robot.hear(/broken i do think|broken is everything|is everything broken/i, function (res)  {
         res.reply('Yes. I believe @benjamin did it.');
     });
 
