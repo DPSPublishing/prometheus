@@ -57,7 +57,7 @@ module.exports = function(robot) {
     });
 
     robot.hear(/broken i do think|broken is everything|is everything broken/i, function (res)  {
-    robot.hear(/is everything broken/i, function (res)  {
+
 
         var people = ['@benjamin', '@fenski', '@rogie', '@thattomperson', 'someone', 'undefined'];
         var randomName = people[Math.floor((Math.random() * people.length))];
