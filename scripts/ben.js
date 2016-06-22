@@ -62,7 +62,7 @@ module.exports = function(robot) {
         var people = ['@benjamin', '@fenski', '@rogie', '@thattomperson', 'someone', 'undefined'];
         var randomName = people[Math.floor((Math.random() * people.length))];
 
-        res.respond('Yes. I believe ' + randomName + ' did it.');
+        res.send('Yes. I believe ' + randomName + ' did it.');
     });
 
     robot.hear(/whats for lunch|lunch|food|fruit/i, function (res)  {
@@ -150,6 +150,6 @@ module.exports = function(robot) {
             "watermelon"];
 
         var theFood = people[Math.floor((Math.random() * foods.length))];
-        res.respond('You could eat ' + theFood);
+        res.send('You could eat ' + theFood);
     });
 }
