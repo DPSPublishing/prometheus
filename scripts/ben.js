@@ -152,6 +152,6 @@ module.exports = function(robot) {
         ];
 
         var theFood = foods[Math.floor((Math.random() * foods.length))];
-        res.send('You could eat my ' + theFood);
+        res.send('Would you like to have ' + theFood + '?');
     });
 }
