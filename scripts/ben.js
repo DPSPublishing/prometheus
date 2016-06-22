@@ -147,7 +147,9 @@ module.exports = function(robot) {
             "tamarillo",
             "tangerine",
             "ugli fruit",
-            "watermelon"];
+            "watermelon",
+            "cheese cake"
+        ];
 
         var theFood = foods[Math.floor((Math.random() * foods.length))];
         res.send('You could eat ' + theFood);
