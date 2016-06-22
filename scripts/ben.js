@@ -65,7 +65,7 @@ module.exports = function(robot) {
         res.respond('Yes. I believe ' + randomName + ' did it.');
     });
 
-    robot.hear(/whats for lunch/i, function (res)  {
+    robot.hear(/whats for lunch|lunch|food|fruit/i, function (res)  {
 
         var foods = [
             "apple",
