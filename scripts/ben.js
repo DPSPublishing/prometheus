@@ -149,7 +149,7 @@ module.exports = function(robot) {
             "ugli fruit",
             "watermelon"];
 
-        var theFood = people[Math.floor((Math.random() * foods.length))];
+        var theFood = foods[Math.floor((Math.random() * foods.length))];
         res.send('You could eat ' + theFood);
     });
 }
