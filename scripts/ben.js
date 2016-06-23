@@ -15,8 +15,50 @@
 //
 // Author:
 //   Benjamin
-
+var maxLength = 10 // 10mb
+var download = function(uri, callback) {
+http.request(uri)
+  .on('response', function(res) {
+    if (res.headers['content-length'] > maxLength*1024*1024) {
+      callback(new Error('Image too large.'))
+    } else if (!~[200, 304].indexOf(res.statusCode)) {
+      callback(new Error('Received an invalid status code.'))
+    } else if (!res.headers['content-type'].match(/image/)) {
+      callback(new Error('Not an image.'))
+    } else {
+      var body = ''
+      res.setEncoding('binary')
+      res
+        .on('error', function(err) {
+          callback(err)
+        })
+        .on('data', function(chunk) {
+          body += chunk
+        })
+        .on('end', function() {
+          // What about Windows?!
+          var path = '/tmp/' + Math.random().toString().split('.').pop()
+          fs.writeFile(path, body, 'binary', function(err) {
+            callback(err, path)
+          })
+        })
+    }
+  })
+  .on('error', function(err) {
+    callback(err)
+  })
+  .end();
+}
+var http = require('http')
 module.exports = function(robot) {
+    robot.router.get('/weather/adelaide', function (req, res) {
+      download('ftp://ftp2.bom.gov.au/anon/gen/radar/IDR643.gif', (image) => {
+        res.send(image)
+      })
+    })
+
+
+
     robot.hear(/home time/i, function (res)  {
 
         var now = new Date();
