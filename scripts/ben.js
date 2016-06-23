@@ -148,7 +148,8 @@ module.exports = function(robot) {
             "tangerine",
             "ugli fruit",
             "watermelon",
-            "cheese cake"
+            "cheese cake",
+            "cat"
         ];
 
         var theFood = foods[Math.floor((Math.random() * foods.length))];
